@@ -1,5 +1,5 @@
-import pygame
-import neat
+import pygame # pip install pygame==2.0.0.dev6
+import neat # neat a instalar es neat-python
 import time
 import os
 import random
