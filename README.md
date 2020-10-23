@@ -1,1 +1,1 @@
-# AI proyects
+# AI
