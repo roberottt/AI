@@ -2,8 +2,6 @@ import numpy as np
 import cv2
 import random
 
-# multiple cascades: https://github.com/Itseez/opencv/tree/master/data/haarcascades
-
 face_cascade = cv2.CascadeClassifier('data\\xml\\haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('data\\xml\\haarcascade_eye.xml')
 mouth_cascade = cv2.CascadeClassifier('data\\xml\\haarcascade_mcs_mouth.xml')
@@ -11,7 +9,7 @@ upper_body = cv2.CascadeClassifier('data\\xml\\haarcascade_upperbody.xml')
 
 
 
-# Adjust threshold value in range 80 to 105 based on your light.
+# Adjust threshold value in range 80 to 105 based on light.
 bw_threshold = 80
 
 # User message
@@ -21,8 +19,8 @@ weared_mask_font_color = (255, 255, 255)
 not_weared_mask_font_color = (0, 0, 255)
 thickness = 2
 font_scale = 1
-weared_mask = "Thank You for wearing MASK"
-not_weared_mask = "Please wear MASK to defeat Corona"
+weared_mask = "Mask"
+not_weared_mask = "Not mask"
 
 # Read video
 cap = cv2.VideoCapture(0)
