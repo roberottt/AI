@@ -2,23 +2,30 @@ import cv2
 import sys
 
 imagePath = sys.argv[1] # With this we'll read the first argument passed in the terminal
-cascadePath = "haarcascade_frontalface_default.xml"
+faceCascadePath = "haarcascade_frontalface_default.xml"
+eyeCascadePath = "haarcascade_eye.xml"
 
 # Create the haar cascade
-faceCascade = cv2.CascadeClassifier(cascadePath)
+faceCascade = cv2.CascadeClassifier(faceCascadePath)
+eyeCascade = cv2.CascadeClassifier(eyeCascadePath)
 
 # Read the image
 image = cv2.imread(imagePath)
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) # We read the image and then we pass it to gray scale
 
-# Detect faces in the image
+# Detect faces and eyes in the image
 faces = faceCascade.detectMultiScale(gray,scaleFactor=1.1,minNeighbors=5,minSize=(30, 30))
+eyes = eyeCascade.detectMultiScale(gray,scaleFactor=1.1,minNeighbors=5,minSize=(30, 30))
 
-print("Found" + str(len(faces)) +"faces!")
+print("Found " + str(len(faces)) +" faces")
+print("Found " + str(len(eyes)) + " eyes")
 
-# Draw a rectangle around the faces
+# Draw a rectangle around the faces and eyes
 for (x, y, w, h) in faces:
     cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
+
+for (i, j, k, g) in eyes:
+    cv2.rectangle(image, (i, j), (i+k, j+g), (0, 0, 255), 2)
 
 cv2.imshow("Faces found", image)
 cv2.waitKey(0)
